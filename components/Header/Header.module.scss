@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+  min-height: 50px;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(214,120,110,1) 0%, rgba(221,176,11,1) 100%);
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  &__logo {
+    @media (max-width: 440px) {
+      display: none;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    gap: 15px;
+    font-size: 1.8rem;
+
+    @media (max-width: 620px) {
+      font-size: 1.2rem;
+    }
+  }
+
+}

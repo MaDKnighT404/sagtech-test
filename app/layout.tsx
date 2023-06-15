@@ -1,4 +1,7 @@
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import './globals.scss';
+
 export const metadata = {
   title: 'Currency exchange',
   description: 'Test work',
@@ -7,7 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Header />
+        <main className="main">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
