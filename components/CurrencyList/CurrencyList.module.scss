@@ -1,0 +1,16 @@
+.currency {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px 20px;
+  justify-content: space-between;
+  margin: 20px 0;
+
+  @media (max-width:639px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__item {
+    height: 60px;
+    background-color: #cda;
+  }
+}

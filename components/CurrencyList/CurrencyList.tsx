@@ -1,25 +1,44 @@
-'use client'
-import {useEffect} from 'react'
-import axios from 'axios';
-
+'use client';
+import { useEffect } from 'react';
+import { useRatesQuery } from '@/redux/services/userApi';
+import styles from './CurrencyList.module.scss';
 
 export default function CurrencyList() {
+  const { data, error, isLoading } = useRatesQuery();
 
-  // useEffect(() => {
-  //   axios
-  //     .get('https://openexchangerates.org/api/latest.json?app_id=2c0ab23ef13f408f9cab6198d5027a93')
-  //     .then((response) => {
-  //       console.log(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Ошибка:', error);
-  //     });
-  // }, [])
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    const errorData = error as {
+      data: {
+        description: string;
+      };
+    };
+
+    const errMsg = errorData.data.description;
+
+    return (
+      <div>
+        <div>Something went wrong:</div>
+        <div>{errMsg}</div>
+      </div>
+    );
+  }
 
   return (
-    <ul>
-      <li>1</li>
+    <ul className={styles.currency}>
+      {data &&
+        Object.entries(data.rates).map(([currency, rate]) => (
+          <li className={styles.currency__item} key={currency}>
+            {currency}: {rate}
+          </li>
+        ))}
     </ul>
-  )
+  );
 }

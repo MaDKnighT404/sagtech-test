@@ -1,25 +1,30 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-type User = {
-  id: number;
-  name: string;
-  email: number;
-};
+interface ExchangeRates {
+  disclaimer: string;
+  license: string;
+  timestamp: number;
+  base: string;
+  rates: {
+    [currency: string]: number;
+  };
+}
 
-export const userApi = createApi({
-  reducerPath: "userApi",
+export const currencyApi = createApi({
+  reducerPath: 'userApi',
   refetchOnFocus: true,
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://jsonplaceholder.typicode.com/",
+    baseUrl: 'https://openexchangerates.org/api',
+    prepareHeaders: (headers) => {
+      headers.set('Authorization', `Token ${process.env.NEXT_PUBLIC_USER_ID_TOKEN}`);
+      return headers;
+    },
   }),
   endpoints: (builder) => ({
-    getUsers: builder.query<User[], null>({
-      query: () => "users",
-    }),
-    getUserById: builder.query<User, { id: string }>({
-      query: ({ id }) => `users/${id}`,
+    rates: builder.query<ExchangeRates, void>({
+      query: () => 'latest.json',
     }),
   }),
 });
 
-export const { useGetUsersQuery, useGetUserByIdQuery } = userApi;
+export const { useRatesQuery } = currencyApi;
