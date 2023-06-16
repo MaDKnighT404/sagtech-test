@@ -1,16 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/counterSlice";
-import { currencyApi } from "./services/userApi";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
+import currency from "./features/currencySlice";
 
 export const store = configureStore({
   reducer: {
-    counterReducer,
-    [currencyApi.reducerPath]: currencyApi.reducer,
+    currency,
   },
   devTools: process.env.NODE_ENV !== "production",
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({}).concat([currencyApi.middleware]),
 });
 
 setupListeners(store.dispatch);

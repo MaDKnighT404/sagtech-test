@@ -1,45 +1,45 @@
-import { useEffect } from 'react';
-import { useRatesQuery } from '@/redux/services/userApi';
+'use client';
+import { useAppSelector } from '@/redux/hooks';
 import styles from './CurrencyList.module.scss';
 
+interface ExchangeRates {
+  disclaimer: string;
+  license: string;
+  timestamp: number;
+  base: string;
+  rates: {
+    [currency: string]: number;
+  };
+}
 
-export default function CurrencyList({ currencyData }) {
+interface CurrencyListProps {
+  currencyData: ExchangeRates;
+}
 
-  // const { data, error, isLoading } = useRatesQuery();
+export default function CurrencyList({ currencyData }: CurrencyListProps) {
+  const currentCurrency = useAppSelector((state) => state.currency.currentCurrency);
 
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+  const baseRate = currencyData.rates[currentCurrency];
 
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
+  const adjustedRates = Object.fromEntries(
+    Object.entries(currencyData.rates).map(([currency, rate]) => {
+      return [currency, (baseRate  / rate ).toFixed(2)];
+    })
+  );
 
-  // if (error) {
-  //   const errorData = error as {
-  //     data: {
-  //       description: string;
-  //     };
-  //   };
+  adjustedRates[currentCurrency] = '1.00';
 
-  //   const errMsg = errorData.data.description;
-
-  //   return (
-  //     <div>
-  //       <div>Something went wrong:</div>
-  //       <div>{errMsg}</div>
-  //     </div>
-  //   );
-  // }
+  const currencyList = Object.entries(adjustedRates).map(
+    ([currency, rate]) => `${currency}: ${rate} ${currentCurrency}`
+  );
 
   return (
-    <ul className={styles.currency}>
-      {/* {data &&
-        Object.entries(data.rates).map(([currency, rate]) => (
-          <li className={styles.currency} key={currency}>
-            {currency}: {rate}
-          </li>
-        ))} */}
+    <ul className={styles['currency-list']}>
+      {currencyList.map((el) => (
+        <li className={styles['currency-list__item']} key={el}>
+          {el}
+        </li>
+      ))}
     </ul>
   );
 }

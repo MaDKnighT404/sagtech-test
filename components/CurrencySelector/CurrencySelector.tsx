@@ -1,11 +1,30 @@
-import React from 'react';
+'use client';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { setCurrentCurrency } from '@/redux/features/currencySlice';
 
-export default function CurrencySelector() {
+interface CurrencySelectorProps {
+  currencyNamesArray: [string, string][];
+}
+
+export default function CurrencySelector({ currencyNamesArray }: CurrencySelectorProps) {
+  const currentCurrency = useAppSelector((state) => state.currency.currentCurrency);
+  const dispatch = useAppDispatch();
+
+  const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCurrency = event.target.value;
+    localStorage.setItem('currency', selectedCurrency);
+    dispatch(setCurrentCurrency(selectedCurrency));
+  };
+
+  const defaultValue = localStorage.getItem('currency') as string;
+
   return (
-    <select>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+    <select value={currentCurrency || defaultValue} onChange={handleCurrencyChange}>
+      {currencyNamesArray.map((cur) => (
+        <option value={cur[0]} key={cur[0]}>
+          {`${cur[1]} (${cur[0]})`}
+        </option>
+      ))}
     </select>
   );
 }

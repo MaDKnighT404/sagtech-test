@@ -10,8 +10,14 @@
   &__link {
     padding: 5px 10px;
     border-radius: 10px;
+    transition: 0.2s ease-in;
+
+    &:hover {
+    text-decoration: underline;
+    }
   }
   &__link_active {
-    background-color: rgb(255, 255, 255);
+    color: #0f7dc6;
+
   }
 }

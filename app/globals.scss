@@ -1,5 +1,8 @@
 :root {
-  --main-color: rgb(17, 17, 86);
+  --header-color: rgb(245, 245, 248);
+  --header-bg: rgb(71, 71, 81);
+  --body-color: rgb(17, 17, 86);
+  --body-bg: rgb(203, 192, 178);
 }
 
 * {
@@ -11,8 +14,8 @@
 body {
   max-width: 100vw;
   min-width: 320px;
-  color: var(--main-color);
-  background-color: rgb(203, 192, 178);
+  color: var(--body-color);
+  background-color: var(--body-bg);
 }
 
 a {
@@ -32,6 +35,7 @@ h2 {
 .main {
   min-height: 90vh;
   padding: 0 15px;
+  color: rgb(17, 17, 86);
 }
 
 .container {
