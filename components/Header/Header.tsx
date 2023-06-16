@@ -36,7 +36,9 @@ export default function Header() {
             Rates
           </Link>
         </nav>
-        <div className={styles.header__navigation}>$$$</div>
+        <select className={styles.header__select}>
+          
+        </select>
       </div>
     </header>
   );

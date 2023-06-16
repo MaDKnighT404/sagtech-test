@@ -3,14 +3,18 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px 20px;
   justify-content: space-between;
-  margin: 20px 0;
+  padding: 20px 0;
 
   @media (max-width:639px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
   &__item {
-    height: 60px;
-    background-color: #cda;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 40px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
   }
 }

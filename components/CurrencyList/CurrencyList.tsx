@@ -35,7 +35,7 @@ export default function CurrencyList() {
     <ul className={styles.currency}>
       {data &&
         Object.entries(data.rates).map(([currency, rate]) => (
-          <li className={styles.currency__item} key={currency}>
+          <li className={styles.currency} key={currency}>
             {currency}: {rate}
           </li>
         ))}
