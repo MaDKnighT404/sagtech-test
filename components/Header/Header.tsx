@@ -1,13 +1,14 @@
-'use client';
-
 import Image from 'next/image';
 import styles from './Header.module.scss';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Navigation from '../Navigation';
+import CurrencySelector from '../CurrencySelector';
+
+const navItems = [
+  { label: 'Convertor', href: '/' },
+  { label: 'Rates', href: '/rates' },
+];
 
 export default function Header() {
-  const pathname = usePathname();
-
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
@@ -18,27 +19,8 @@ export default function Header() {
           width={45}
           height={45}
         />
-        <nav className={styles.header__navigation}>
-          <Link
-            className={`${styles.header__link} ${
-              pathname === '/' ? styles.header__link_active : ''
-            }`}
-            href="/"
-          >
-            Convertor
-          </Link>
-          <Link
-            className={`${styles.header__link} ${
-              pathname === '/rates' ? styles.header__link_active : ''
-            }`}
-            href="/rates"
-          >
-            Rates
-          </Link>
-        </nav>
-        <select className={styles.header__select}>
-          
-        </select>
+        <Navigation navLinks={navItems} />
+        <CurrencySelector />
       </div>
     </header>
   );

@@ -1,38 +1,28 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type CounterState = {
-  value: number;
+interface CurrencyListProps {
+  rates: {
+    [currency: string]: number;
+  };
+}
+
+const initialState: CurrencyListProps = {
+  rates: {
+    USD: 1,
+    RUB: 0.5,
+  },
 };
 
-const initialState = {
-  value: 0,
-} as CounterState;
-
-export const counter = createSlice({
-  name: "counter",
+export const currency = createSlice({
+  name: 'currency',
   initialState,
   reducers: {
     reset: () => initialState,
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
-    },
-    decrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value -= action.payload;
+    setCurrencyData: (state, action: PayloadAction<CurrencyListProps>) => {
+      state.rates = action.payload.rates;
     },
   },
 });
 
-export const {
-  increment,
-  incrementByAmount,
-  decrement,
-  decrementByAmount,
-  reset,
-} = counter.actions;
-export default counter.reducer;
+export const { setCurrencyData, reset } = currency.actions;
+export default currency.reducer;

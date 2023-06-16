@@ -1,44 +1,45 @@
-'use client';
 import { useEffect } from 'react';
 import { useRatesQuery } from '@/redux/services/userApi';
 import styles from './CurrencyList.module.scss';
 
-export default function CurrencyList() {
-  const { data, error, isLoading } = useRatesQuery();
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+export default function CurrencyList({ currencyData }) {
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // const { data, error, isLoading } = useRatesQuery();
 
-  if (error) {
-    const errorData = error as {
-      data: {
-        description: string;
-      };
-    };
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
 
-    const errMsg = errorData.data.description;
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
-    return (
-      <div>
-        <div>Something went wrong:</div>
-        <div>{errMsg}</div>
-      </div>
-    );
-  }
+  // if (error) {
+  //   const errorData = error as {
+  //     data: {
+  //       description: string;
+  //     };
+  //   };
+
+  //   const errMsg = errorData.data.description;
+
+  //   return (
+  //     <div>
+  //       <div>Something went wrong:</div>
+  //       <div>{errMsg}</div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <ul className={styles.currency}>
-      {data &&
+      {/* {data &&
         Object.entries(data.rates).map(([currency, rate]) => (
           <li className={styles.currency} key={currency}>
             {currency}: {rate}
           </li>
-        ))}
+        ))} */}
     </ul>
   );
 }
