@@ -4,7 +4,12 @@
   justify-content: center;
   height: 5vh;
   min-height: 50px;
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(214,120,110,1) 0%, rgba(221,176,11,1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(214, 120, 110, 1) 0%,
+    rgba(221, 176, 11, 1) 100%
+  );
 
   &__wrapper {
     display: flex;
@@ -31,4 +36,11 @@
     }
   }
 
+  &__link {
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+  &__link_active {
+    background-color: rgb(255, 255, 255);
+  }
 }
