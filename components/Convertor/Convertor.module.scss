@@ -1,0 +1,43 @@
+.convertor {
+  &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+  }
+
+  &__label {
+  }
+
+  &__input {
+  }
+
+  &__select {
+  }
+
+  &__btns {
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  &__btn {
+    padding: 10px 20px;
+    background-color: red;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  &__result {
+    display: flex;
+    justify-content: center;
+  }
+}

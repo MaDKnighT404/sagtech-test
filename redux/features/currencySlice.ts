@@ -2,6 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CurrencyListProps {
+  currenciesArray: [string, string][];
   currentCurrency: string;
   rates: {
     [currency: string]: number;
@@ -9,6 +10,7 @@ interface CurrencyListProps {
 }
 
 const initialState: CurrencyListProps = {
+  currenciesArray: [],
   currentCurrency: '',
   rates: {},
 };
@@ -18,6 +20,9 @@ export const currencySlice = createSlice({
   initialState,
   reducers: {
     reset: () => initialState,
+    setCurrencyArray: (state, action: PayloadAction<[string, string][]>) => {
+      state.currenciesArray = action.payload;
+    },
     setCurrentCurrency: (state, action: PayloadAction<string>) => {
       state.currentCurrency = action.payload;
     },
@@ -27,5 +32,5 @@ export const currencySlice = createSlice({
   },
 });
 
-export const { setCurrencyData, setCurrentCurrency, reset } = currencySlice.actions;
+export const { setCurrencyData, setCurrentCurrency, setCurrencyArray, reset } = currencySlice.actions;
 export default currencySlice.reducer;

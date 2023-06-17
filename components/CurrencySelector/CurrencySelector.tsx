@@ -1,6 +1,6 @@
 'use client';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { setCurrentCurrency } from '@/redux/features/currencySlice';
+import { setCurrencyArray, setCurrentCurrency } from '@/redux/features/currencySlice';
 import styles from './CurrencySelector.module.scss';
 import { useEffect } from 'react';
 
@@ -23,9 +23,10 @@ export default function CurrencySelector({ currencyNamesArray }: CurrencySelecto
       .then((data) => {
         const currency = data.currency;
         dispatch(setCurrentCurrency(currency));
+        dispatch(setCurrencyArray(currencyNamesArray));
       })
       .catch((error) => {
-        console.log('Ошибка при получении данных:', error);
+        console.error(error);
       });
   }, []);
 
