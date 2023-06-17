@@ -1,12 +1,6 @@
 'use client';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-let localStorageCurrency = 'USD';
-
-if (typeof window !== 'undefined') {
-  localStorageCurrency = localStorage.getItem('currency') || 'USD';
-}
-
 interface CurrencyListProps {
   currentCurrency: string;
   rates: {
@@ -15,7 +9,7 @@ interface CurrencyListProps {
 }
 
 const initialState: CurrencyListProps = {
-  currentCurrency: localStorageCurrency,
+  currentCurrency: '',
   rates: {},
 };
 

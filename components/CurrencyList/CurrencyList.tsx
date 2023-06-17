@@ -23,7 +23,7 @@ export default function CurrencyList({ currencyData }: CurrencyListProps) {
 
   const adjustedRates = Object.fromEntries(
     Object.entries(currencyData.rates).map(([currency, rate]) => {
-      return [currency, (baseRate  / rate ).toFixed(2)];
+      return [currency, (baseRate / rate).toFixed(2)];
     })
   );
 
@@ -34,12 +34,15 @@ export default function CurrencyList({ currencyData }: CurrencyListProps) {
   );
 
   return (
-    <ul className={styles['currency-list']}>
-      {currencyList.map((el) => (
-        <li className={styles['currency-list__item']} key={el}>
-          {el}
-        </li>
-      ))}
-    </ul>
+    <>
+      {!currentCurrency && <div className="loader" />}
+      <ul className={styles['currency-list']}>
+        {currentCurrency && currencyList.map((el) => (
+          <li className={styles['currency-list__item']} key={el}>
+            {el}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }

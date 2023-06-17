@@ -2,6 +2,7 @@
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { setCurrentCurrency } from '@/redux/features/currencySlice';
 import styles from './CurrencySelector.module.scss';
+import { useEffect } from 'react';
 
 interface CurrencySelectorProps {
   currencyNamesArray: [string, string][];
@@ -13,20 +14,26 @@ export default function CurrencySelector({ currencyNamesArray }: CurrencySelecto
 
   const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCurrency = event.target.value;
-    localStorage.setItem('currency', selectedCurrency);
     dispatch(setCurrentCurrency(selectedCurrency));
   };
 
-  const defaultValue = (
-    typeof window !== 'undefined' ? window.localStorage.getItem('currency') : 'USD'
-  ) as string;
+  useEffect(() => {
+    fetch('https://ipapi.co/json/')
+      .then((response) => response.json())
+      .then((data) => {
+        const currency = data.currency;
+        dispatch(setCurrentCurrency(currency));
+      })
+      .catch((error) => {
+        console.log('Ошибка при получении данных:', error);
+      });
+  }, []);
 
   return (
-    <select
-      value={currentCurrency || defaultValue}
-      onChange={handleCurrencyChange}
-      className={styles.select}
-    >
+    <select value={currentCurrency} onChange={handleCurrencyChange} className={styles.select}>
+      <option value="" disabled>
+        Select currency
+      </option>
       {currencyNamesArray.map((cur) => (
         <option value={cur[0]} key={cur[0]}>
           {`${cur[1]} (${cur[0]})`}
