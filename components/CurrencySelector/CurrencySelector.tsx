@@ -17,7 +17,9 @@ export default function CurrencySelector({ currencyNamesArray }: CurrencySelecto
     dispatch(setCurrentCurrency(selectedCurrency));
   };
 
-  const defaultValue = localStorage.getItem('currency') as string;
+  const defaultValue = (
+    typeof window !== 'undefined' ? window.localStorage.getItem('currency') : 'USD'
+  ) as string;
 
   return (
     <select
