@@ -1,20 +1,7 @@
 'use client';
 import { useAppSelector } from '@/redux/hooks';
 import styles from './CurrencyList.module.scss';
-
-interface ExchangeRates {
-  disclaimer: string;
-  license: string;
-  timestamp: number;
-  base: string;
-  rates: {
-    [currency: string]: number;
-  };
-}
-
-interface CurrencyListProps {
-  currencyData: ExchangeRates;
-}
+import { CurrencyListProps } from '@/types';
 
 export default function CurrencyList({ currencyData }: CurrencyListProps) {
   const currentCurrency = useAppSelector((state) => state.currency.currentCurrency);

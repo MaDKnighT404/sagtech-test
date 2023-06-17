@@ -1,8 +1,8 @@
 :root {
-  --header-color: rgb(245, 245, 248);
-  --header-bg: rgb(71, 71, 81);
-  --body-color: rgb(17, 17, 86);
-  --body-bg: rgb(203, 192, 178);
+  --additional-color: rgb(245, 245, 248);
+  --additional-bg: rgb(71, 71, 81);
+  --main-color: rgb(17, 17, 86);
+  --main-bg: rgb(203, 192, 178);
 }
 
 * {
@@ -14,8 +14,8 @@
 body {
   max-width: 100vw;
   min-width: 290px;
-  color: var(--body-color);
-  background-color: var(--body-bg);
+  color: var(--main-color);
+  background-color: var(--main-bg);
 }
 
 a {

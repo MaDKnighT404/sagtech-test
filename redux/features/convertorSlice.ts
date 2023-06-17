@@ -1,20 +1,34 @@
 'use client';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface ConvertorProps {
+interface ConvertorState {
   amount: string;
+  from: string;
+  to: string;
+  result: number;
 }
 
-const initialConvertorState: ConvertorProps = {
+const initialState: ConvertorState = {
   amount: '',
+  from: 'AED',
+  to: 'AED',
+  result: 0,
 };
 
-export const convertorSlice = createSlice({
+const convertorSlice = createSlice({
   name: 'convertor',
-  initialState: initialConvertorState,
+  initialState,
   reducers: {
+    setFormData: (state, action: PayloadAction<ConvertorState>) => {
+      state.amount = action.payload.amount;
+      state.from = action.payload.from;
+      state.to = action.payload.to;
+    },
     setAmount: (state, action: PayloadAction<string>) => {
       state.amount = action.payload;
+    },
+    setResult: (state, action: PayloadAction<number>) => {
+      state.result = action.payload;
     },
     resetAmount: (state) => {
       state.amount = '';
@@ -22,5 +36,5 @@ export const convertorSlice = createSlice({
   },
 });
 
-export const { setAmount, resetAmount } = convertorSlice.actions;
+export const { setFormData, setAmount, setResult, resetAmount } = convertorSlice.actions;
 export default convertorSlice.reducer;
