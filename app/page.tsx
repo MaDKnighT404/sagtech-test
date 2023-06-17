@@ -1,5 +1,4 @@
 import Convertor from '@/components/Convertor';
-import styles from './page.module.scss';
 import { getCurrency } from '@/servises/getCurrency';
 
 export default async function Home() {

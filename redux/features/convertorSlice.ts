@@ -10,8 +10,8 @@ interface ConvertorState {
 
 const initialState: ConvertorState = {
   amount: '',
-  from: 'AED',
-  to: 'AED',
+  from: 'USD',
+  to: 'RUB',
   result: 0,
 };
 
@@ -30,11 +30,9 @@ const convertorSlice = createSlice({
     setResult: (state, action: PayloadAction<number>) => {
       state.result = action.payload;
     },
-    resetAmount: (state) => {
-      state.amount = '';
-    },
+    resetForm: () => initialState,
   },
 });
 
-export const { setFormData, setAmount, setResult, resetAmount } = convertorSlice.actions;
+export const { setFormData, setAmount, setResult, resetForm } = convertorSlice.actions;
 export default convertorSlice.reducer;

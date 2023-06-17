@@ -3,6 +3,7 @@
   --additional-bg: rgb(71, 71, 81);
   --main-color: rgb(17, 17, 86);
   --main-bg: rgb(203, 192, 178);
+  --active: rgb(22, 149, 234);
 }
 
 * {
@@ -35,7 +36,7 @@ h2 {
 .main {
   min-height: 90vh;
   padding: 0 15px;
-  color: rgb(17, 17, 86);
+  color: var(--main-color);
 }
 
 .container {

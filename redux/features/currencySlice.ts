@@ -1,16 +1,16 @@
 'use client';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface CurrencyListProps {
-  currenciesArray: [string, string][];
+interface CurrencyState {
+  currencyArray: [string, string][];
   currentCurrency: string;
   rates: {
     [currency: string]: number;
   };
 }
 
-const initialState: CurrencyListProps = {
-  currenciesArray: [],
+const initialState: CurrencyState = {
+  currencyArray: [],
   currentCurrency: '',
   rates: {},
 };
@@ -19,18 +19,17 @@ export const currencySlice = createSlice({
   name: 'currency',
   initialState,
   reducers: {
-    reset: () => initialState,
     setCurrencyArray: (state, action: PayloadAction<[string, string][]>) => {
-      state.currenciesArray = action.payload;
+      state.currencyArray = action.payload;
     },
     setCurrentCurrency: (state, action: PayloadAction<string>) => {
       state.currentCurrency = action.payload;
     },
-    setCurrencyData: (state, action: PayloadAction<CurrencyListProps>) => {
+    setCurrencyData: (state, action: PayloadAction<CurrencyState>) => {
       state.rates = action.payload.rates;
     },
   },
 });
 
-export const { setCurrencyData, setCurrentCurrency, setCurrencyArray, reset } = currencySlice.actions;
+export const { setCurrencyData, setCurrentCurrency, setCurrencyArray } = currencySlice.actions;
 export default currencySlice.reducer;
