@@ -12,8 +12,10 @@ export default function Form({ currencyData }: CurrencyListProps) {
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const amount = e.target.value;
-    const amountNoZeros = `${parseInt(amount, 10)}`;
-    dispatch(setFormData({ ...formData, amount: amountNoZeros }));
+    const correctAmount = amount.replace(/[^\d]/g, '');
+    const parsedAmount = String(parseInt(correctAmount || '0', 10));
+
+    dispatch(setFormData({ ...formData, amount: parsedAmount }));
     dispatch(setResult(0));
   };
 
@@ -47,11 +49,11 @@ export default function Form({ currencyData }: CurrencyListProps) {
   return (
     <form className={styles.form}>
       <div className={styles.form__field}>
-        <label htmlFor="from" className={styles.convertor__label}>
+        <label htmlFor="from" className={styles.form__label}>
           Amount
         </label>
         <input
-          type="number"
+          type="text"
           id="from"
           className={styles.form__input}
           value={amount}
@@ -78,7 +80,7 @@ export default function Form({ currencyData }: CurrencyListProps) {
         </label>
         <select className={styles.form__select} value={formData.to} onChange={handleToChange}>
           {currencyNamesArray.map((cur) => (
-            <option value={cur[0]} key={cur[0]} className={styles.convertor__option}>
+            <option value={cur[0]} key={cur[0]} className={styles.form__option}>
               {`${cur[0]}`}
             </option>
           ))}

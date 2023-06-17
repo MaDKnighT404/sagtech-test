@@ -13,7 +13,7 @@ export default function Result() {
           {formData.amount} {formData.from} =
         </span>
         <span className={styles.result__to}>
-          {result} {formData.to}
+           {result} {formData.to}
         </span>
       </p>
     </div>
