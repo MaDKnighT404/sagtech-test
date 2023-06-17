@@ -22,8 +22,8 @@ export default async function Header() {
           width={45}
           height={45}
         />
-        <Navigation navLinks={navItems} />
         <CurrencySelector currencyNamesArray={currencyNamesArray} />
+        <Navigation navLinks={navItems} />
       </div>
     </header>
   );

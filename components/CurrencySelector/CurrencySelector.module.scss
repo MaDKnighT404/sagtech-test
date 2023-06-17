@@ -1,0 +1,10 @@
+.select {
+  font-size: 1.2rem;
+  max-width: 350px;
+  flex-wrap: wrap;
+  cursor: pointer;
+
+  @media (max-width: 680px) {
+    width: 100%;
+  }
+}

@@ -6,7 +6,7 @@ export default async function Rates() {
 
   return (
     <div className="container">
-      <h2>Currency rates1</h2>
+      <h2>Currency rates</h2>
       <CurrencyList currencyData={currencyData} />
     </div>
   );

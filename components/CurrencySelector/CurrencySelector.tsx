@@ -1,6 +1,7 @@
 'use client';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { setCurrentCurrency } from '@/redux/features/currencySlice';
+import styles from './CurrencySelector.module.scss';
 
 interface CurrencySelectorProps {
   currencyNamesArray: [string, string][];
@@ -19,7 +20,11 @@ export default function CurrencySelector({ currencyNamesArray }: CurrencySelecto
   const defaultValue = localStorage.getItem('currency') as string;
 
   return (
-    <select value={currentCurrency || defaultValue} onChange={handleCurrencyChange}>
+    <select
+      value={currentCurrency || defaultValue}
+      onChange={handleCurrencyChange}
+      className={styles.select}
+    >
       {currencyNamesArray.map((cur) => (
         <option value={cur[0]} key={cur[0]}>
           {`${cur[1]} (${cur[0]})`}

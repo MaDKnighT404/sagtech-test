@@ -1,23 +1,35 @@
 .header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   height: 5vh;
-  min-height: 50px;
+  min-height: 80px;
   color: var(--header-color);
   background: var(--header-bg);
 
+  @media (max-width: 680px) {
+    min-height: 100px;
+  }
+  
   &__wrapper {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+
+    @media (max-width: 680px) {
+      justify-content: center;
+      gap: 10px;
+      width: 300px;
+    }
   }
 
   &__logo {
-    @media (max-width: 440px) {
+    @media (max-width: 680px) {
       display: none;
     }
   }

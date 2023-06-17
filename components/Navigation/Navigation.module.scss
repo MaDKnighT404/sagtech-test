@@ -3,10 +3,6 @@
   gap: 15px;
   font-size: 1.5rem;
 
-  @media (max-width: 620px) {
-    font-size: 1.2rem;
-  }
-
   &__link {
     padding: 5px 10px;
     border-radius: 10px;
