@@ -12,24 +12,24 @@
       flex-basis: 100%;
     }
   }
-  
+
   &__input {
     font-size: 1.2rem;
     padding: 8px;
     border-radius: 5px;
     border: 0;
   }
-  
+
   &__label {
     padding-left: 5px;
   }
-  
+
   &__input::-webkit-outer-spin-button,
   &__input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
-  
+
   &__select {
     font-size: 1.2rem;
     padding: 8px;
@@ -37,12 +37,28 @@
     border-radius: 5px;
     border: 0;
   }
-  
+
+  &__swap {
+    width: 30px;
+    height: 30px;
+    background: url('/images/horizont_arrow.svg') no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    margin-top: 20px;
+    cursor: pointer;
+
+    @media (max-width: 640px) {
+      background: url('/images/vertical_arrow.svg') no-repeat;
+      background-position: 50%;
+      margin-top: 0px;
+    }
+  }
+
   &__btns {
     flex-basis: 100%;
     text-align: center;
   }
-  
+
   &__btn {
     padding: 10px 20px;
     color: var(--additional-color);
@@ -52,4 +68,3 @@
     font-size: 1rem;
   }
 }
-

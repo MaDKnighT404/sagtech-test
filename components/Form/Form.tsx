@@ -31,6 +31,15 @@ export default function Form({ currencyData }: CurrencyListProps) {
     dispatch(setResult(0));
   };
 
+  const handleSwapCurrency = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const from = formData.from;
+    const to = formData.to;
+
+    dispatch(setFormData({ ...formData, to: from, from: to }));
+    dispatch(setResult(0));
+  };
+
   const handleFormReset = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(resetForm());
@@ -73,6 +82,8 @@ export default function Form({ currencyData }: CurrencyListProps) {
           ))}
         </select>
       </div>
+
+      <button onClick={handleSwapCurrency} className={styles.form__swap}></button>
 
       <div className={styles.form__field}>
         <label htmlFor="from" className={styles.form__label}>
