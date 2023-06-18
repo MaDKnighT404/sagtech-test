@@ -24,11 +24,12 @@ export default function CurrencyList({ currencyData }: CurrencyListProps) {
     <>
       {!currentCurrency && <div className="loader" />}
       <ul className={styles['currency-list']}>
-        {currentCurrency && currencyList.map((el) => (
-          <li className={styles['currency-list__item']} key={el}>
-            {el}
-          </li>
-        ))}
+        {currentCurrency &&
+          currencyList.map((el) => (
+            <li className={styles['currency-list__item']} key={el}>
+              {el}
+            </li>
+          ))}
       </ul>
     </>
   );

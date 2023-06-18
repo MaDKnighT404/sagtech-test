@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import './globals.scss';
 import { Providers } from '@/redux/provider';
+import './globals.scss';
 
 export const metadata = {
   title: 'Currency exchange',

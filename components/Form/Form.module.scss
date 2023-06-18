@@ -41,14 +41,14 @@
   &__swap {
     width: 30px;
     height: 30px;
-    background: url('/images/horizont_arrow.svg') no-repeat;
+    background: url('/images/horizont_arrow.svg') no-repeat rgb(255, 255, 255);
     background-position: 50%;
     border-radius: 50%;
     margin-top: 20px;
     cursor: pointer;
 
     @media (max-width: 640px) {
-      background: url('/images/vertical_arrow.svg') no-repeat;
+      background: url('/images/vertical_arrow.svg') no-repeat rgb(255, 255, 255);
       background-position: 50%;
       margin-top: 0px;
     }

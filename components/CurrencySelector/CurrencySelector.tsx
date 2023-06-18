@@ -1,8 +1,9 @@
 'use client';
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { setCurrencyArray, setCurrentCurrency } from '@/redux/features/currencySlice';
 import styles from './CurrencySelector.module.scss';
-import { useEffect } from 'react';
 
 interface CurrencySelectorProps {
   currencyNamesArray: [string, string][];
@@ -11,6 +12,8 @@ interface CurrencySelectorProps {
 export default function CurrencySelector({ currencyNamesArray }: CurrencySelectorProps) {
   const currentCurrency = useAppSelector((state) => state.currency.currentCurrency);
   const dispatch = useAppDispatch();
+  const pathname = usePathname();
+  const isRates = pathname === '/rates';
 
   const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCurrency = event.target.value;
@@ -31,7 +34,11 @@ export default function CurrencySelector({ currencyNamesArray }: CurrencySelecto
   }, []);
 
   return (
-    <select value={currentCurrency} onChange={handleCurrencyChange} className={styles.select}>
+    <select
+      value={currentCurrency}
+      onChange={handleCurrencyChange}
+      className={`${styles.select} ${isRates ? '' : styles.select__hide}`}
+    >
       <option value="" disabled>
         Select currency
       </option>

@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import styles from './Header.module.scss';
 import Navigation from '../Navigation';
 import CurrencySelector from '../CurrencySelector';
 import { getCurrencyNames } from '@/servises/getCurrency';
+import styles from './Header.module.scss';
+
 const navItems = [
   { label: 'Convertor', href: '/' },
   { label: 'Rates', href: '/rates' },
@@ -10,7 +11,7 @@ const navItems = [
 
 export default async function Header() {
   const currencyNames = await getCurrencyNames();
-  const currencyNamesArray = Object.entries(currencyNames) as [string, string][]
+  const currencyNamesArray = Object.entries(currencyNames) as [string, string][];
 
   return (
     <header className={styles.header}>
